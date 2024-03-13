@@ -1,4 +1,4 @@
-const RESERVAR_URL = "http://localhost:8080/api/reservas/realizar";
+const RESERVAR_URL = "http://34.201.190.251:8080/api/reservas/realizar";
 
 export const reservarViaje = async (idViaje) => {
     try {

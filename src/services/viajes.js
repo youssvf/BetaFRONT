@@ -1,4 +1,4 @@
-const VIAJES_URL = "http://localhost:8080/api/viajes";
+const VIAJES_URL = "http://34.201.190.251:8080/api/viajes";
 
 export const getViajes = async () => {
   try {
