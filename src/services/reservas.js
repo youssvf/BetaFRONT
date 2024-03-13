@@ -1,8 +1,9 @@
-const RESERVAR_URL = "http://34.201.190.251:8080/api/reservas/realizar";
+const RESERVAS_URL = "http://34.201.190.251:8080/api/reservas/realizar";
 
 export const reservarViaje = async (idViaje) => {
     try {
         const token = JSON.parse(sessionStorage.getItem("token"));
+        console.log(token);
 
         if (!token) {
             throw new Error("No se encontró el token en sessionStorage");
@@ -14,13 +15,13 @@ export const reservarViaje = async (idViaje) => {
             throw new Error("La cantidad de asientos ingresada no es válida");
         }
 
-        const response = await fetch(`${RESERVAR_URL}/${idViaje}`, {
+        const response = await fetch(RESERVAS_URL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
             },
-            body: JSON.stringify({ asientosreservados: cantidadAsientos }),
+            body: JSON.stringify({ viaje:idViaje, asientosreservados: cantidadAsientos }),
         });
 
         if (!response.ok) {
@@ -33,4 +34,29 @@ export const reservarViaje = async (idViaje) => {
         console.error("Error al realizar la reserva:", error);
         throw new Error("Error al realizar la reserva");
     }
+};
+
+
+export const cancelarReserva = async (idReserva) => {
+  try {
+    const token = String(sessionStorage.getItem("token"));
+
+    const response = await fetch(`${RESERVAS_URL}/${idReserva}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error en la solicitud: ${response.status}`);
+    }
+
+    const mensaje = await response.json();
+    return mensaje;
+  } catch (error) {
+    console.error("Error al cancelar la reserva:", error);
+    throw new Error("Error al cancelar la reserva");
+  }
 };
