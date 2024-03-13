@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { cancelarReserva } from "../../services/reservas";
+import { cancelarReserva, getReservasUsuario } from "../../services/reservas";
 
 export default function MisReservas() {
   const [reservas, setReservas] = useState([]);
@@ -21,7 +21,6 @@ export default function MisReservas() {
     try {
       await cancelarReserva(idReserva);
       alert("Reserva cancelada exitosamente.");
-      // Actualizar la lista de reservas después de cancelar
       const reservasUsuario = await getReservasUsuario();
       setReservas(reservasUsuario);
     } catch (error) {

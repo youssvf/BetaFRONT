@@ -6,6 +6,9 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Login from './components/usuarios/Login.jsx'
 import Viajes from './components/viajes/Viajes.jsx'
 import PublicarViaje from './components/viajes/PublicarViaje.jsx'
+import MisReservas from './components/reservas/MisReservas.jsx'
+import SolicitudesViaje from './components/reservas/Solicitudes.jsx'
+import Solicitudes from './components/reservas/Solicitudes.jsx'
 
 const router = createBrowserRouter([
   {
@@ -15,7 +18,9 @@ const router = createBrowserRouter([
       {path:"registro", element:<Registro/>},
       {path:'login',element:<Login />},
       {path:'viajes', element: <Viajes />},
-      {path:'publicarViaje', element: <PublicarViaje />}  
+      {path:'publicarViaje', element: <PublicarViaje />},
+      {path:'misReservas',element:<MisReservas />},
+      {path:'solicitudes', element: <Solicitudes />}
     ]
   }
 ])

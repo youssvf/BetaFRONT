@@ -1,8 +1,8 @@
-const REGISTRO_URL = "http://34.201.190.251:8080/api/usuarios/registro";
+const USUARIOS_URL = "http://34.201.190.251:8080/api/usuarios/";
 
 export const registrar = async (usuario) => {
   try {
-    const response = await fetch(REGISTRO_URL, {
+    const response = await fetch(USUARIOS_URL+'registro', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,11 +22,9 @@ export const registrar = async (usuario) => {
   }
 };
 
-const LOGIN_URL = "http://34.201.190.251:8080/api/usuarios/login";
-
 export const login = async (credenciales) => {
   try {
-    const response = await fetch(LOGIN_URL, {
+    const response = await fetch(USUARIOS_URL+'/login', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

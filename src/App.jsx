@@ -1,11 +1,18 @@
 import { useState } from "react";
 import Registro from "./components/usuarios/Registro";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import Login from "./components/usuarios/Login";
 import Viajes from "./components/viajes/Viajes";
 
 function App() {
   const [usuario, setUsuario] = useState(null);
+
+  const navigate = useNavigate('');
+
+  const handleCerrarSesion = () => {
+    sessionStorage.clear();
+    navigate('/')
+  }
 
   return (
     <>
@@ -26,10 +33,13 @@ function App() {
         <div>
           <Link to='/publicarViaje'>Publicar Viaje</Link>
         </div>
-
+        <div>
+          <Link to='/solicitudes'>Solicitudes</Link>
+        </div>
+        {sessionStorage.getItem("usuario") && (
+        <button onClick={handleCerrarSesion}>Cerrar Sesión</button>
+      )}
       </nav>
-      {usuario ? '' : <Login setUsuario={setUsuario}/>}
-
       <Outlet context={[usuario, setUsuario]} />
     </>
   );
