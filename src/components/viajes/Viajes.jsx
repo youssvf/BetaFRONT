@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { getViajes } from "../../services/viajes";
 import { reservarViaje } from "../../services/reservas";
+import { Link } from "react-router-dom";
 
-export default function Viajes() {
+export default function Viajes({usuario}) {
   const [viajes, setViajes] = useState([]);
 
   useEffect(() => {
@@ -25,8 +26,6 @@ export default function Viajes() {
   const reservar = async (idViaje) => {
     try {
       await reservarViaje(idViaje);
-      const nuevosViajes = await getViajes();
-      setViajes(nuevosViajes);
     } catch (error) {
       console.error("Error al reservar el viaje:", error);
     }
@@ -35,9 +34,11 @@ export default function Viajes() {
   return (
     <div>
       <h1>Viajes Disponibles</h1>
+      {/* {usuario ? <button><Link to='/publicarViaje'>Publicar Viaje</Link></button> : ''} */}
       <ul>
         {viajes.map((viaje) => (
           <li key={viaje.id}>
+            <p>Conductor: {viaje.conductor}</p>
             <p>Origen: {viaje.origen}</p>
             <p>Destino: {viaje.destino}</p>
             <p>Fecha de Salida: {viaje.fechasalida}</p>

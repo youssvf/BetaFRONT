@@ -2,7 +2,7 @@ const RESERVAR_URL = "http://localhost:8080/api/reservas/realizar";
 
 export const reservarViaje = async (idViaje) => {
     try {
-        const token = sessionStorage.getItem("usuario") ? JSON.parse(sessionStorage.getItem("usuario")).token : null;
+        const token = JSON.parse(sessionStorage.getItem("token"));
 
         if (!token) {
             throw new Error("No se encontró el token en sessionStorage");

@@ -5,6 +5,7 @@ import Registro from './components/usuarios/Registro.jsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Login from './components/usuarios/Login.jsx'
 import Viajes from './components/viajes/Viajes.jsx'
+import PublicarViaje from './components/viajes/PublicarViaje.jsx'
 
 const router = createBrowserRouter([
   {
@@ -13,7 +14,8 @@ const router = createBrowserRouter([
     children:[
       {path:"registro", element:<Registro/>},
       {path:'login',element:<Login />},
-      {path:'viajes', element: <Viajes />}  
+      {path:'viajes', element: <Viajes />},
+      {path:'publicarViaje', element: <PublicarViaje />}  
     ]
   }
 ])

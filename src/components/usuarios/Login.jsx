@@ -15,9 +15,10 @@ export default function Login({setUsuario}) {
       const usuarioAutenticado = await login(credenciales);
 
       console.log("Usuario autenticado:", usuarioAutenticado);
-      sessionStorage.setItem('usuario',JSON.stringify(usuarioAutenticado.usuario))
-      sessionStorage.setItem('token', JSON.stringify(usuarioAutenticado.token))
-      setUsuario(usuarioAutenticado.usuario)
+      sessionStorage.clear();
+      sessionStorage.setItem("usuario",JSON.stringify(usuarioAutenticado.usuario))
+      sessionStorage.setItem("token", JSON.stringify(usuarioAutenticado.token))
+
       navigate("/viajes");
     } catch (error) {
       console.error("Error durante el inicio de sesión:", error);

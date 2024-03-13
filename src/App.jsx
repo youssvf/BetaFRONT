@@ -20,10 +20,15 @@ function App() {
         <div>
           <Link to="/viajes">Viajes</Link>
         </div>
-        <div>
+        {/* <div>
           <Link to="/misreservas">Mis Reservas</Link>
+        </div> */}
+        <div>
+          <Link to='/publicarViaje'>Publicar Viaje</Link>
         </div>
+
       </nav>
+      {usuario ? '' : <Login setUsuario={setUsuario}/>}
 
       <Outlet context={[usuario, setUsuario]} />
     </>
